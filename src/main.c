@@ -27,22 +27,18 @@ int main(void) {
             break;
         }
 
-        // Remove trailing newline
         input[strcspn(input, "\n")] = '\0';
 
-        // Skip empty input
         char *temp = input;
         while (isspace((unsigned char)*temp)) temp++;
         if (*temp == '\0') {
             continue;
         }
 
-        // Exit command
         if (strcmp(temp, "exit") == 0) {
             break;
         }
 
-        // Tokenize input
         int token_count = 0;
         char *token = strtok(input, " \t\r\n");
         while (token != NULL && token_count < MAX_TOKENS - 1) {
@@ -51,7 +47,6 @@ int main(void) {
         }
         tokens[token_count] = NULL;
 
-        // Print TOKENS section
         printf("\n--------- TOKENS ---------\n");
         for (int i = 0; i < token_count; i++) {
             printf("%2d : %-8s %s\n", i, "WORD", tokens[i]);
@@ -59,7 +54,6 @@ int main(void) {
         printf("%2d : %-8s %s\n", token_count, "END", "END");
         printf("--------------------------\n\n");
 
-        // Print PIPELINE section
         printf("========== PIPELINE ==========\n\n");
         printf("Command 1\n");
         printf("-----------------------------\n");
